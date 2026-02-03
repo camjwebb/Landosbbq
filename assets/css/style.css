@@ -764,7 +764,7 @@ section, section.white-bg {
 }
 
 .dark-wrapper.opaqued, .dark-opaqued {
-    background-color: rgba(0,0,0, 0.8);
+    background-color: rgba(0,0,0, 0.5);
 }
 
 .dark-opaqued-half  {
