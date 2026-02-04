@@ -77,6 +77,23 @@ app.post('/book-event', async (req, res) => {
             `
         });
 
+        // Send confirmation email to the customer
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: "Thank you for contacting Lando's Barbeque!",
+            html: `
+                <h2>Thank you for your booking request, ${name}!</h2>
+                <p>We've received your message and will get back to you shortly.</p>
+                <hr>
+                <p><strong>Your message:</strong></p>
+                <p>${message}</p>
+                <hr>
+                <p>If you have any questions, feel free to call or text us at <a href="tel:801-471-8715">801-471-8715</a>.</p>
+                <p>Best regards,<br>Lando's Barbeque</p>
+            `
+        });
+
         res.redirect('/book-event?success=true');
     } catch (error) {
         console.error('Error sending email:', error);
