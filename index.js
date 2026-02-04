@@ -61,11 +61,18 @@ app.get('/book-event', (req, res) => {
 app.post('/book-event', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
+    console.log('Received booking request:', { name, email, phone });
+
+    let businessEmailSent = false;
+    let customerEmailSent = false;
+
+    // Send email to Lando's Barbeque
     try {
-        // Send email to Lando's Barbeque
+        console.log('Sending email to landosbarbeque@gmail.com...');
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: 'landosbarbeque@gmail.com',
+            replyTo: email,
             subject: `New Booking Request from ${name}`,
             html: `
                 <h2>New Booking Request</h2>
@@ -76,10 +83,17 @@ app.post('/book-event', async (req, res) => {
                 <p>${message}</p>
             `
         });
+        console.log('Email to landosbarbeque@gmail.com sent successfully');
+        businessEmailSent = true;
+    } catch (error) {
+        console.error('Error sending business email:', error);
+    }
 
-        // Send confirmation email to the customer
+    // Send confirmation email to the customer
+    try {
+        console.log(`Sending confirmation email to ${email}...`);
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: `"Lando's Barbeque" <${process.env.EMAIL_USER}>`,
             to: email,
             subject: "Thank you for contacting Lando's Barbeque!",
             html: `
@@ -93,10 +107,16 @@ app.post('/book-event', async (req, res) => {
                 <p>Best regards,<br>Lando's Barbeque</p>
             `
         });
-
-        res.redirect('/book-event?success=true');
+        console.log(`Confirmation email to ${email} sent successfully`);
+        customerEmailSent = true;
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('Error sending customer confirmation email:', error);
+    }
+
+    // Redirect based on results
+    if (businessEmailSent || customerEmailSent) {
+        res.redirect('/book-event?success=true');
+    } else {
         res.redirect('/book-event?error=true');
     }
 });
