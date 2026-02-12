@@ -3,6 +3,67 @@
 
 <head>
     <%- include('partials/head') %>
+    <style>
+        .about-couple-photo {
+            width: 130%;
+            max-width: 130%;
+            margin-left: -180px;
+        }
+
+        .about-couple-text {
+            padding-left: 48px;
+        }
+
+        .smoker-progression {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px 24px;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .smoker-step {
+            text-align: left;
+        }
+
+        .smoker-step img {
+            width: 100%;
+            max-width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .smoker-step h4 {
+            margin: 10px 0 0;
+        }
+
+        @media (max-width: 991px) {
+            .about-couple-photo {
+                width: 100%;
+                max-width: 100%;
+                margin-left: 0;
+            }
+
+            .about-couple-text {
+                padding-left: 15px;
+            }
+
+            .smoker-progression {
+                max-width: 100%;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .smoker-progression {
+                grid-template-columns: 1fr;
+            }
+
+            .smoker-step img {
+                height: auto;
+            }
+        }
+    </style>
 </head>
 
 <body id="page-top" class="regular-navigation">
@@ -10,54 +71,68 @@
     <div class="master-wrapper">
 
         <%- include('partials/nav') %>
-                   
 
-        <!-- About Us section: photo + short bio -->
         <section class="light-wrapper">
             <div class="section-inner">
                 <div class="container">
                     <div class="row mb50">
-                        <div class="col-md-5 col-md-offset-1">
-                            <img src="/assets/img/team/couple.jpg" alt="Landon &amp; [Wife]" class="img-responsive img-centered mb30" />
+                        <br>
+
+                        <div class="col-md-6">
+                            <img src="/assets/img/Landon and Aspyn.jpeg" alt="Landon and Aspyn" class="img-responsive about-couple-photo" />
                         </div>
 
-                        <div class="col-md-5">
-                            <h2 class="section-heading">About <span class="theme-accent-color">Us</span></h2>
-                            <p class="lead">We're Landon and [Wife's name] — family, food lovers, and the people behind Lando's BBQ. We opened our doors to share our love of slow-smoked flavors and gathering around good food.</p>
-                            <p>Replace this paragraph with a short personal story: how you started, what inspires your cooking, and a friendly note for customers. Keep it to 2–3 sentences for best layout.</p>
+                        <div class="col-md-6 about-couple-text">
+                            <h2 class="section-heading">Landon and <span class="theme-accent-color">Aspyn</span></h2>
+                            <p class="lead">We’re the people behind Lando’s BBQ. We have a deep passion for good food, quality,
+                                 and standing proudly behind everything we serve. For us, BBQ isn’t just about what’s on the plate, it’s about the care, time,
+                                  and intention that go into making something worth sharing. We love seeing the smiles around the table and knowing our food played a
+                                   small part in bringing people together. BBQ is more than food. It’s about connection, slowing down, and creating moments people remember.</p>
                         </div>
                     </div>
 
                     <div class="row text-center mb30">
                         <div class="col-lg-12">
-                            <h3 class="section-heading">Our Journey</h3>
+                            <h3 class="section-heading">Our Story</h3>
                             <hr class="thin-hr">
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3 mb30">
-                            <img src="/assets/img/team/journey1.jpg" alt="Early days" class="img-responsive" />
-                            <h4 class="mt10">Early Days</h4>
-                            <p>Short caption about how it began.</p>
+                    <div class="row mb50">
+                        <div class="col-md-10 col-md-offset-1 text-center">
+                            <p class="lead">From our first backyard cooks to full trailer setups, every smoker taught us something new. This journey shaped the flavor, process, and consistency behind every plate we serve.</p>
+                        </div>
+                    </div>
+
+                                      <div class="smoker-progression">
+                        <div class="smoker-step">
+                            <img src="/assets/img/Traeger.jpeg" alt="Traeger smoker" class="img-responsive" />
+                            <!-- <h4>Traeger</h4> -->
                         </div>
 
-                        <div class="col-sm-6 col-md-3 mb30">
-                            <img src="/assets/img/team/journey2.jpg" alt="First pop-up" class="img-responsive" />
-                            <h4 class="mt10">First Pop-up</h4>
-                            <p>Caption about your first events or milestones.</p>
+                        <div class="smoker-step">
+                            <img src="/assets/img/Offset.jpeg" alt="Offset smoker" class="img-responsive" />
+                            <!-- <h4>Offset</h4> -->
                         </div>
 
-                        <div class="col-sm-6 col-md-3 mb30">
-                            <img src="/assets/img/team/journey3.jpg" alt="Family recipes" class="img-responsive" />
-                            <h4 class="mt10">Family Recipes</h4>
-                            <p>Caption about recipes or influences.</p>
+                        <div class="smoker-step">
+                            <img src="/assets/img/Brazos.jpeg" alt="Brazos smoker" class="img-responsive" />
+                            <!-- <h4>Brazos</h4> -->
                         </div>
 
-                        <div class="col-sm-6 col-md-3 mb30">
-                            <img src="/assets/img/team/journey4.jpg" alt="Today" class="img-responsive" />
-                            <h4 class="mt10">Today</h4>
-                            <p>Caption about where you are now and what's next.</p>
+                        <div class="smoker-step">
+                            <img src="/assets/img/Goldees Smoker.jpeg" alt="Goldees smoker" class="img-responsive" />
+                            <!-- <h4>Goldees Smoker</h4> -->
+                        </div>
+
+                        <div class="smoker-step">
+                            <img src="/assets/img/Trailer Smoker in Garage.jpeg" alt="Trailer smoker in garage" class="img-responsive" />
+                            <!-- <h4>Trailer Smoker in Garage</h4> -->
+                        </div>
+
+                        <div class="smoker-step">
+                            <img src="/assets/img/Trailer Smoker.jpeg" alt="Trailer smoker" class="img-responsive" />
+                            <!-- <h4>Trailer Smoker</h4> -->
                         </div>
                     </div>
                 </div>
@@ -69,17 +144,6 @@
     </div>
 
     <%- include('partials/scripts') %>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-       'use strict';
-        jQuery('#headerwrap').backstretch([
-          "/assets/img/bg/bg1.jpg",
-          "/assets/img/bg/bg2.jpg",
-          "/assets/img/bg/bg3.jpg",
-        ], {duration: 8000, fade: 500});
-    });
-    </script>
 
 </body>
 
